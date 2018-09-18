@@ -8,13 +8,11 @@
 
     <ImageView
         android:id="@+id/titleImageView"
-        android:layout_width="270dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:contentDescription="?android:attr/candidatesTextStyleSpans"
+        android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/main_title" />
+        app:srcCompat="@drawable/main_title"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>
