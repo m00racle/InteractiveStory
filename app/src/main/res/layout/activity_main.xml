@@ -8,11 +8,13 @@
 
     <ImageView
         android:id="@+id/titleImageView"
-        android:layout_width="360dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
+        android:contentDescription="Signals from Mars title image"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/main_title"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/main_title" />
 </android.support.constraint.ConstraintLayout>
