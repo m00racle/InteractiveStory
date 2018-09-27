@@ -31,13 +31,14 @@
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
+        android:background="@android:color/white"
         android:ems="10"
         android:hint="Enter Your Name"
         android:inputType="textCapWords|textPersonName"
         android:maxLength="30"
         app:layout_constraintBottom_toTopOf="@+id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleImageView" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
