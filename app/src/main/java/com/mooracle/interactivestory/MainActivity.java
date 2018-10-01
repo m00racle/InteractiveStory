@@ -24,8 +24,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = nameField.getText().toString();
-                Toast.makeText(MainActivity.this, name, Toast.LENGTH_LONG).show();
+                startStory();
             }
         });
+    }
+
+    private void startStory() {
+
     }
 }
