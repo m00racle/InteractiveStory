@@ -1,5 +1,6 @@
 package com.mooracle.interactivestory;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startStory() {
+        Intent intent = new Intent(this, StoryActivity.class);
 
+        /*express the intention:*/
+        startActivity(intent);/*<- this will start the activity coded in intent field above*/
     }
 }
