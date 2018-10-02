@@ -25,15 +25,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = nameField.getText().toString();
-                startStory();
+                startStory(name);
             }
         });
     }
 
-    private void startStory() {
+    private void startStory(String name) {
         Intent intent = new Intent(this, StoryActivity.class);
 
         /*express the intention:*/
+        intent.putExtra("name", name); /*<- pass String name variable as data to new activity*/
         startActivity(intent);/*<- this will start the activity coded in intent field above*/
     }
 }
