@@ -33,8 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private void startStory(String name) {
         Intent intent = new Intent(this, StoryActivity.class);
 
+        /*pulling the resources*/
+
+        String key = getString(R.string.key_name);
+
         /*express the intention:*/
-        intent.putExtra("name", name); /*<- pass String name variable as data to new activity*/
+        intent.putExtra(key, name); /*<- pass String name variable as data to new activity*/
         startActivity(intent);/*<- this will start the activity coded in intent field above*/
     }
 }

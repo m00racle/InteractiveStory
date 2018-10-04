@@ -20,7 +20,7 @@ public class StoryActivity extends AppCompatActivity {
         /*Get the intent from MainActivity*/
         Intent intent = getIntent(); /*<- return the intent that started this activity*/
 
-        String name = intent.getStringExtra("name"); /*<-this calls for String Extra called "name"*/
+        String name = intent.getStringExtra(getString(R.string.key_name)); /*<-this using the resources"*/
 
         if (name == null || name.isEmpty()){name = "Friend";} /*<- this to avoid Null Pointer Exception and blanks*/
 
