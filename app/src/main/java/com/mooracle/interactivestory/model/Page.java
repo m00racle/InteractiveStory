@@ -8,6 +8,28 @@ public class Page {
     private Choice choice2;
     /*NOTE: Since we only set two choices for each page this practice is used but for more choices for each page we
     * need to consider an array of Choices*/
+    private boolean isFinalPage = false;
+
+    public Page(int imageId, int textId, Choice choice1, Choice choice2) {
+        this.imageId = imageId;
+        this.textId = textId;
+        this.choice1 = choice1;
+        this.choice2 = choice2;
+    }
+
+    public Page(int imageId, int textId) {
+        this.imageId = imageId;
+        this.textId = textId;
+        this.isFinalPage = true;
+    }
+
+    public boolean isFinalPage() {
+        return isFinalPage;
+    }
+
+    public void setFinalPage(boolean finalPage) {
+        isFinalPage = finalPage;
+    }
 
     public int getImageId() {
         return imageId;
