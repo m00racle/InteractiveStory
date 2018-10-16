@@ -20,6 +20,7 @@ public class StoryActivity extends AppCompatActivity {
     of the class. If we ever refactor to rename this class the TAG value will automatically changed!*/
 
     private Story story; /*<- new member variable*/
+    private String name;
 
     private ImageView storyImageView;
     private TextView storyTextView;
@@ -41,7 +42,7 @@ public class StoryActivity extends AppCompatActivity {
         /*Get the intent from MainActivity*/
         Intent intent = getIntent(); /*<- return the intent that started this activity*/
 
-        String name = intent.getStringExtra(getString(R.string.key_name)); /*<-this using the resources"*/
+        name = intent.getStringExtra(getString(R.string.key_name)); /*<-this using the resources"*/
 
         if (name == null || name.isEmpty()){name = "Friend";} /*<- this to avoid Null Pointer Exception and blanks*/
 
@@ -58,5 +59,15 @@ public class StoryActivity extends AppCompatActivity {
         Page page = story.getPage(pageNumber);
         Drawable image = ContextCompat.getDrawable(this, page.getImageId());
         storyImageView.setImageDrawable(image);
+
+        String pageText = getString(page.getTextId());
+        pageText = String.format(pageText, name); /*<- add user name if available none if not so it can be
+        used in multiple pages!*/
+
+        storyTextView.setText(pageText);
+
+        /*Button text:*/
+        choice1Button.setText(page.getChoice1().getTextId());
+        choice2Button.setText(page.getChoice2().getTextId());
     }
 }
