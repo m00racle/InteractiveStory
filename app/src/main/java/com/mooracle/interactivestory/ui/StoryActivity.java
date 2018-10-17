@@ -70,11 +70,16 @@ public class StoryActivity extends AppCompatActivity {
         /*Button text:*/
         if (page.isFinalPage()){
             choice1Button.setVisibility(View.INVISIBLE);
-            choice2Button.setVisibility(View.INVISIBLE);
+            choice2Button.setText(R.string.play_again_button_text);
         } else {
-            choice1Button.setText(page.getChoice1().getTextId());
-            choice2Button.setText(page.getChoice2().getTextId());
+            loadButtons(page);
         }
+
+    }
+
+    private void loadButtons(final Page page) {
+        choice1Button.setText(page.getChoice1().getTextId());
+        choice2Button.setText(page.getChoice2().getTextId());
 
         /*repopulate stories based on the user clicks:*/
         choice1Button.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +97,5 @@ public class StoryActivity extends AppCompatActivity {
                 loadPage(nextPage);
             }
         });
-
     }
 }
