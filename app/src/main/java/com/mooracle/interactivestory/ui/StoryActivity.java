@@ -14,7 +14,11 @@ import com.mooracle.interactivestory.R;
 import com.mooracle.interactivestory.model.Page;
 import com.mooracle.interactivestory.model.Story;
 
+import java.util.Stack;
+
 public class StoryActivity extends AppCompatActivity {
+    /*Creating Stack:*/
+    private Stack<Integer> pageStack = new Stack<>();
 
     /*We want to add a log in Logcat thus we need to add TAG:*/
     public static final String TAG = StoryActivity.class.getSimpleName();/*<- this will set the TAG as simple name
@@ -57,7 +61,10 @@ public class StoryActivity extends AppCompatActivity {
     }
 
     private void loadPage(int pageNumber) {
+        pageStack.push(pageNumber);/*<- push page number into stack to be popped out in Back navigation*/
+
         final Page page = story.getPage(pageNumber);
+
         Drawable image = ContextCompat.getDrawable(this, page.getImageId());
         storyImageView.setImageDrawable(image);
 
@@ -75,6 +82,9 @@ public class StoryActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //finish(); /*<- back to main activity*/
+
+                    pageStack.clear(); /*<- clearing the stack of previous pages*/
+
                     loadPage(0);/*<- restart game with same user name*/
                 }
             });
@@ -106,5 +116,16 @@ public class StoryActivity extends AppCompatActivity {
                 loadPage(nextPage);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        pageStack.pop(); /*see the transcript for more explanation*/
+
+        if (pageStack.isEmpty()) {
+            super.onBackPressed();
+        } else {
+            loadPage(pageStack.pop());
+        }
     }
 }
