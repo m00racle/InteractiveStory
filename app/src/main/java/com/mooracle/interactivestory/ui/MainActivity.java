@@ -28,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
                 startStory(name);
             }
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        nameField.setText("");
     }
 
     private void startStory(String name) {
