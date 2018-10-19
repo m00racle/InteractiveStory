@@ -1,5 +1,9 @@
 package com.mooracle.interactivestory.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
@@ -67,6 +71,8 @@ public class StoryActivity extends AppCompatActivity {
 
         Drawable image = ContextCompat.getDrawable(this, page.getImageId());
         storyImageView.setImageDrawable(image);
+        animateStoryImageView();/*<- animate the story Image View*/
+
 
         String pageText = getString(page.getTextId());
         pageText = String.format(pageText, name); /*<- add user name if available none if not so it can be
@@ -92,6 +98,26 @@ public class StoryActivity extends AppCompatActivity {
             loadButtons(page);
         }
 
+    }
+
+    private void animateStoryImageView() {
+        /*animate the image view:*/
+        ObjectAnimator fadeEffect = ObjectAnimator.ofFloat(storyImageView,"alpha", 1f, .3f, 1f);
+        fadeEffect.setDuration(2000);
+        /*This animation will fade out from alpha=1 to blur on alpha=0.3 and then fade in again from 0.3 to alpha = 1*/
+
+        final AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.play(fadeEffect);
+
+        /*set the animation listener keep it animated in loops*/
+        animatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                animatorSet.start();
+            }
+        });
+        animatorSet.start();
     }
 
     private void loadButtons(final Page page) {
